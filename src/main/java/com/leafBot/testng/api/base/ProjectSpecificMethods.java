@@ -11,19 +11,18 @@ import com.leafBot.selenium.api.base.SeleniumBase;
 
 import utils.DataLibrary;
 
-
 public class ProjectSpecificMethods extends SeleniumBase {
 
-	public String dataSheetName;		
+	public String dataSheetName;
 
 	@DataProvider(name = "fetchData")
 	public Object[][] fetchData() throws IOException {
 		return DataLibrary.readExcelData(dataSheetName);
-	}	
+	}
 
 	@BeforeMethod
 	public void beforeMethod() {
-		driver = startApp("chrome", "http://leaftaps.com/opentaps");
+		driver = startApp("chrome", "https://acme-test.uipath.com/account/login");
 		node = test.createNode(testCaseName);
 	}
 
@@ -31,17 +30,5 @@ public class ProjectSpecificMethods extends SeleniumBase {
 	public void afterMethod() {
 		close();
 	}
-
-
-
-
-
-
-
-
-
-
-
-
 
 }

@@ -6,25 +6,26 @@ import org.testng.annotations.Test;
 import com.leafBot.pages.LoginPage;
 import com.leafBot.testng.api.base.ProjectSpecificMethods;
 
-public class TC001_LoginLogOut extends ProjectSpecificMethods{	
+public class TC001_Login extends ProjectSpecificMethods{	
 
 	@BeforeTest
 	public void setValues() {
-		testCaseName = "Login and LoginOut";
-		testDescription = "Login testCase using DemoSalesManager UserName and LogOut";
+		testCaseName = "Login";
+		testDescription = "Login testCase using email and Password";
 		nodes = "Leads";
-		authors = "Gopinath";
+		authors = "Silvia Jessy";
 		category = "Smoke";
 		dataSheetName = "TC001";
 	}
 
 	@Test(dataProvider = "fetchData")
-	public void createLeaf(String uName, String pwd) {
+	public void createLeaf(String email, String password) {
 		new LoginPage(driver, node, test)
-		.enterUserName(uName)
-		.enterPassword(pwd)
+		.enterUserName(email)
+		.enterPassword(password)
 		.clickLogin()
-		.clickLogout();		
+		.VerifyThePageTitle();
+	
 	}
 
 
